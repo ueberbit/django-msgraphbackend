@@ -104,8 +104,8 @@ class MSGraphBackend(BaseEmailBackend):
         """A helper method that does the actual sending."""
         if not email_message.recipients():
             return False
-        user_id = self.user_id or self._get_user(email_message.from_email)
-        url = f"https://graph.microsoft.com/v1.0/users/{user_id}/sendMail"
+        #user_id = self.user_id or self._get_user(email_message.from_email)
+        url = f"https://graph.microsoft.com/v1.0/users/{email_message.from_email}/sendMail"
         message = base64.b64encode(email_message.message().as_bytes())
         headers = {
             "Content-Type": "text/plain",
